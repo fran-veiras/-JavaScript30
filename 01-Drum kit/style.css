@@ -1,0 +1,49 @@
+body {
+    background: #b8b5ff;
+}
+
+.title {
+    text-align: center;
+}
+
+h1 {
+    font-family: Helvetica, sans-serif;
+    margin-top: 2rem;
+}
+
+p {
+    font-family: Helvetica, sans-serif;
+    font-size: 2rem;
+}
+
+.keys {
+    display: flex;
+    height: 80vh;
+    align-items: center;
+    justify-content: center;
+}
+
+kbd {
+    font-size: 1.8rem;
+}
+
+.key {
+    width: 180px;
+    height: 180px;
+    background: #7868e6;
+    margin: 0px 15px 0px 15px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.541);
+    border: solid 4px black;
+    border-radius: 5px;
+    transition: all 0.07s;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #7eca9c;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.541);
+}
+
+
+
