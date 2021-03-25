@@ -1,0 +1,21 @@
+
+1. array.prototype.filter()
+filter the list of inventors for those who were born in the 1500's
+
+2. array.prototype.map()
+first name and last name -> array
+
+3. array.prototype.sort()
+sort the inventors by birthate, oldest to youngest
+
+4. array.prototype.reduce()
+how many years did all the inventors live
+
+5. array.prototype.sort()
+sort the inventors by years older
+
+6. create a list of boulevards in paris that contain 'de' 
+anywhere in the name
+
+7. sort Exercise
+sort the people alphabetically by last name
