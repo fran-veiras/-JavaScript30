@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Helvetica, sans-serif;
+        }
+        h1 {
+            font-size: 20px;
+            margin: 5px auto;
+            position: absolute;
+        }
+        .container {
+            text-align: center;
+            display: block;
+        }
+        input {
+            background: #289672;
+            width: 300px;
+            height: 60px;
+            margin-top: 5%;
+            border: none;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 3px 3px 0px 0px #29bb89;
+            color: white;
+        }
+        input::placeholder{
+            color: rgba(255, 255, 255, 0.52);
+        }
+        textarea:focus, input:focus{
+            outline: none;
+        }
+        .bar {
+            position: relative;
+            background: #289672;
+            box-shadow: 3px 3px 0px 0px #29bb89;
+            color: white;
+            width: 300px;
+            height: 60px;
+            display: block;
+            margin: 10px auto;
+        }
+        li {
+            text-decoration: none;
+            list-style:none;
+        }
+        ul {
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <input id="inp" type="text" placeholder="Ingrese aqui...">
+            <div class="bar">
+                <h1>Ingrse la ciudad o destino deseado</h1>
+            </div>
+            <ul id="val">
+            </ul>
+        </form>
+    </div>
+</body>
+<script>
+    const url = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+    const cities = []
+
+    fetch(url).then(response => response.json())
+    .then(data => cities.push(...data))
+
+    function findMatches(wordToMatch, cities) {
+        return cities.filter(place => {
+            const regex = RegExp(wordToMatch, 'gi')
+            return place.city.match(regex) || place.state.match(regex)
+        })
+    }
+
+    const inputValue = document.getElementById('inp');
+    const suggestions = document.getElementById('val')
+
+    inputValue.addEventListener('keyup', obt);
+    inputValue.addEventListener('change', obt)
+
+    function obt() {
+        const matchArray = findMatches(this.value, cities)
+        const html = matchArray.map(place => {
+            return `
+            <li>
+                <div class="bar">
+                    ${place.city}, ${place.state}
+                </div>
+            </li>
+            `
+        }).join('');
+        suggestions.innerHTML = html;
+    }
+</script>
+</html>
